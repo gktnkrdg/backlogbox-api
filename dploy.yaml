@@ -1,0 +1,8 @@
+
+production:
+    host: "89.252.180.151"
+    user: "backlogb@backlogbox.com"
+    pass: "G18M1ejuj8"
+    path:
+        local: "/"
+        remote: "public_html/api"

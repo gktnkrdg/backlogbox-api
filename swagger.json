@@ -1,0 +1,246 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "BacklogBox Api"
+  },
+  "host": "www.backlogbox.com",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/movies": {
+      "get": {
+        "tags":[  
+          "movie"
+       ],
+       "summary":"Get movie ",
+        "description": "Get all movies",
+        "operationId": "movieGet",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/HelloWorldResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "post":{
+        "tags":[  
+          "movie"
+       ],
+       "summary":"Create Movie",
+        "description": "Returns 'Hello' to the caller",
+        "operationId": "moviePost",
+        "parameters": [
+          {
+            "name": "movie",
+            "in": "body",
+            "description": "Movie to add to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateMovie"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/HelloWorldResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put":{
+        "summary":"Put Movie",
+        "tags": [
+          "movie"
+        ],
+        "description": "Returns 'Hello' to the caller",
+        "operationId": "moviePut",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "movie",
+            "in": "body",
+            "description": "Update movie",
+            "required": true, 
+             "schema": {
+                "$ref": "#/definitions/CreateMovie"
+              }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/HelloWorldResponse"
+            }
+          },
+       "404": {
+            "description": "Pet not found"
+          }
+        }
+      }
+     
+    },
+    "/api/movies/{movieId}":{
+    
+    "delete":{
+      "summary":"Delete Movie",
+      "tags": [
+        "movie"
+      ],
+      "description": "Returns 'Hello' to the caller",
+      "operationId": "movieDelete",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "movieId",
+          "in": "path",
+          "description": "Movie to delete to the store",
+          "required": true, 
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success",
+          "schema": {
+            "$ref": "#/definitions/HelloWorldResponse"
+          }
+        },
+     "404": {
+          "description": "Pet not found"
+        }
+      }
+    }
+    
+  }
+    
+  ,
+  "/api/todos": {
+    "get": {
+      "tags":[  
+        "todos"
+     ],
+      "summary":"todo",
+      "description": "Returns 'Hello' to the caller",
+      "operationId": "todosGet",
+      "responses": {
+        "200": {
+          "description": "Success",
+          "schema": {
+            "$ref": "#/definitions/HelloWorldResponse"
+          }
+        },
+        "default": {
+          "description": "Error",
+          "schema": {
+            "$ref": "#/definitions/ErrorResponse"
+          }
+        }
+      }
+    }
+  }
+
+},
+  
+  "definitions": {
+    "Movie": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Movie"
+        },
+        {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "CreateMovie": {
+      "type": "object",
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "genre": {
+          "type":"array",
+          "items":{  
+             "type":"string"
+          }
+        },
+        "director": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "imdbRating": {
+          "type": "string"
+        },
+        "rottenTomatoesRating": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
