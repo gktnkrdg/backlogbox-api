@@ -36,13 +36,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
-app.use(function (req, res, next) {
-  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-  res.header('Expires', '-1');
-  res.header('Pragma', 'no-cache');
-  next()
-});
-app.use(compression());
+app.use(compression()); //Compress all routes
 app.post("/api/github", function (req, res) {
   var sender = req.body.sender;
   var branch = req.body.ref;
