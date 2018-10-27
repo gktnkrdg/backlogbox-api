@@ -24,7 +24,6 @@
     "swagger-ui-express": "^4.0.1"
   },
   "devDependencies": {
-   
     "mocha": "^5.2.0"
   }
 }
