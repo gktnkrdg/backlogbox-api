@@ -11,7 +11,7 @@ var compression = require('compression');
 var app = express();
 var mongoose = require('mongoose')
 var swaggerUi = require('swagger-ui-express')
-var  swaggerDocument = require('./swagger.json')
+var  swaggerDocument = require('./../swagger.json')
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -28,6 +28,7 @@ mongoose.connect('mongodb+srv://admin:mJaE4dZl3X5N6th1@cluster0-4ydds.mongodb.ne
 Mongodb Database  at URL : mongodb://@cluster0-4ydds.mongodb.net/backlogger`)})
 .catch(()=> { console.log(`Error Connecting to the Mongodb 
 Database at URL : mongodb://@cluster0-4ydds.mongodb.net/backlogger`)})
+
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
