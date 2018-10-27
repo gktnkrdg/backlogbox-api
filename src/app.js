@@ -2,6 +2,7 @@ var bluebird = require('bluebird')
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+const helmet = require('helmet')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var index = require('./routes/index.route');
@@ -42,7 +43,9 @@ app.use(function (req, res, next) {
   res.header('Pragma', 'no-cache');
   next()
 });
-app.use(compression()); //Compress all routes
+app.use(compression());
+app.use(helmet.noCache())
+app.use(helmet.frameguard())
 app.post("/api/github", function (req, res) {
   var sender = req.body.sender;
   var branch = req.body.ref;
