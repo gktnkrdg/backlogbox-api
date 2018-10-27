@@ -40,7 +40,7 @@ app.use(compression()); //Compress all routes
 app.post("/api/github", function (req, res) {
   var sender = req.body.sender;
   var branch = req.body.ref;
-
+    console.log(req)
   if(branch.indexOf('master') > -1){
       console.log("works")
   }
