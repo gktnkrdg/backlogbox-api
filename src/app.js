@@ -37,7 +37,14 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(compression()); //Compress all routes
+app.post("/api/github", function (req, res) {
+  var sender = req.body.sender;
+  var branch = req.body.ref;
 
+  if(branch.indexOf('master') > -1){
+      console.log("works")
+  }
+})
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);
