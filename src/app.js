@@ -28,7 +28,7 @@ mongoose.Promise = bluebird
 mongoose.connect('mongodb+srv://admin:mJaE4dZl3X5N6th1@cluster0-4ydds.mongodb.net/backlogger?retryWrites=true', { promiseLibrary: require('bluebird') })
 .then(()=> { console.log(`Succesfully Connected to the 
 Mongodb Database  at URL : mongodb://@cluster0-4ydds.mongodb.net/backlogger`)})
-.catch(()=> { console.log(`Error Connecting to the Mongodb 
+.catch(()=> { console.log(`Error Connecting to the MongoDB 
 Database at URL : mongodb://@cluster0-4ydds.mongodb.net/backlogger`)})
 
 
