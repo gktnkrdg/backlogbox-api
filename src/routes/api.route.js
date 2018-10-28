@@ -11,19 +11,17 @@ router.use('/todos', todos);
 router.use('/github',  function (req, res) {
     var sender = req.body.sender;
     var branch = req.body.ref;
-      console.log(req)
     if(branch.indexOf('master') > -1){
-        console.log("works")
         deploy(res);
     }
   })
   function deploy(res){
     shell.chmod('u+x', '~/backlogbox/backlogbox-api/deploy.sh');
     shell.exec('~/backlogbox/backlogbox-api/deploy.sh', function(err, stdout, stderr){
-        // if (err) {
-        //  console.error("error bu  " + err);
-        //  return res.send(500);
-        // }
+        if (err) {
+         console.error("error bu  " + err);
+         return res.send(500);
+        }
         
         return res.status(200).json({status: 200, message: "Succesfully pull recieved"});
       });
