@@ -1,6 +1,6 @@
 cd ~/backlogbox/backlogbox-api/
 
-echo "Pulling from Master" 
+echo "Pulling from Master " 
 
 git pull 
 
