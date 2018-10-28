@@ -43,8 +43,18 @@ app.post("/api/github", function (req, res) {
     console.log(req)
   if(branch.indexOf('master') > -1){
       console.log("works")
+      deploy(res);
   }
 })
+function deploy(res){
+  childProcess.exec('cd ./deploy.sh', function(err, stdout, stderr){
+      if (err) {
+       console.error(err);
+       return res.send(500);
+      }
+      res.send(200);
+    });
+}
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);
