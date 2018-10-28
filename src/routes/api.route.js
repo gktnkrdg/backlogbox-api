@@ -24,7 +24,7 @@ router.use('/github',  function (req, res) {
          console.error(err);
          return res.send(500);
         }
-        res.send(200);
+        return res.status(200).json({status: 200, message: "Succesfully pull recieved"});
       });
   }
 module.exports = router;
