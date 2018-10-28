@@ -38,25 +38,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
-app.use(compression()); //Compress all routes
-app.post("/api/github", function (req, res) {
-  var sender = req.body.sender;
-  var branch = req.body.ref;
-    console.log(req)
-  if(branch.indexOf('master') > -1){
-      console.log("works")
-      deploy(res);
-  }
-})
-function deploy(res){
-  childProcess.exec('cd ./deploy.sh', function(err, stdout, stderr){
-      if (err) {
-       console.error(err);
-       return res.send(500);
-      }
-      res.send(200);
-    });
-}
+app.use(compression());
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);
