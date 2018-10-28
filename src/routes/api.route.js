@@ -11,9 +11,19 @@ router.use('/todos', todos);
 router.use('/github',  function (req, res) {
     var sender = req.body.sender;
     var branch = req.body.ref;
-  
+      console.log(req)
     if(branch.indexOf('master') > -1){
         console.log("works")
+        deploy(res);
     }
   })
+  function deploy(res){
+    childProcess.exec('cd ./deploy.sh', function(err, stdout, stderr){
+        if (err) {
+         console.error(err);
+         return res.send(500);
+        }
+        res.send(200);
+      });
+  }
 module.exports = router;
