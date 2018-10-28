@@ -18,7 +18,7 @@ router.use('/github',  function (req, res) {
     }
   })
   function deploy(res){
-    childProcess.exec('cd ./deploy.sh', function(err, stdout, stderr){
+    childProcess.exec('cd ~/backlogbox/backlogbox-api/deploy.sh', function(err, stdout, stderr){
         if (err) {
          console.error(err);
          return res.send(500);
