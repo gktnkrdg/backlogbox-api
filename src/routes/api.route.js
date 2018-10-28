@@ -19,7 +19,7 @@ router.use('/github',  function (req, res) {
     shell.chmod('u+x', '~/backlogbox/backlogbox-api/deploy.sh');
     shell.exec('~/backlogbox/backlogbox-api/deploy.sh', function(err, stdout, stderr){
         if (err) {
-         console.error("error bu  " + err);
+         console.error("error bu   " + err);
          return res.send(500);
         }
         
