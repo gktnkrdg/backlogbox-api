@@ -21,7 +21,7 @@
         "tags":[  
           "movie"
        ],
-       "summary":"Get movie ",
+       "summary":"Get movie  ",
         "description": "Get all movies",
         "operationId": "movieGet",
         "responses": {
