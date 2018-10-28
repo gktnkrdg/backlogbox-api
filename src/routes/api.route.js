@@ -1,5 +1,5 @@
 var express = require('express')
-
+var shell = require('shelljs');
 var router = express.Router()
 var movies = require('./api/movies.route')
 var restaurants = require('./api/restaurant.route')
@@ -18,7 +18,7 @@ router.use('/github',  function (req, res) {
     }
   })
   function deploy(res){
-    childProcess.exec('cd ~/backlogbox/backlogbox-api/deploy.sh', function(err, stdout, stderr){
+    shell.exec('~/backlogbox/backlogbox-api/deploy.sh', function(err, stdout, stderr){
         if (err) {
          console.error(err);
          return res.send(500);

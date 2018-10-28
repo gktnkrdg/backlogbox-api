@@ -2,7 +2,7 @@ cd ~/backlogbox/backlogbox-api/
 
 echo "Pulling from Master" 
 
-git pull origin master
+git pull 
 
 echo "Pulled successfully from master"
 
