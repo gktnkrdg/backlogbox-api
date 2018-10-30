@@ -4,10 +4,10 @@
     "version": "1.0.4",
     "title": "BacklogBox Api"
   },
-  "host": "www.backlogbox.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "consumes": [
     "application/json"
@@ -121,7 +121,7 @@
       ],
       "parameters": [
         {
-          "name": "movieId",
+          "name": "movie_id",
           "in": "path",
           "description": "Movie to delete to the store",
           "required": true, 
@@ -199,14 +199,11 @@
         "title": {
           "type": "string"
         },
-        "description": {
+        "overview": {
           "type": "string"
         },
         "genre": {
-          "type":"array",
-          "items":{  
-             "type":"string"
-          }
+          "type":"string"
         },
         "director": {
           "type": "string"
@@ -214,13 +211,10 @@
         "year": {
           "type": "string"
         },
-        "imdbRating": {
+        "imdb_rating": {
           "type": "string"
         },
-        "rottenTomatoesRating": {
-          "type": "string"
-        },
-        "image": {
+        "image_url": {
           "type": "string"
         }
       }

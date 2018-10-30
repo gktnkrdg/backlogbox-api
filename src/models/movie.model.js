@@ -1,22 +1,27 @@
-var mongoose = require('mongoose')
-var mongoosePaginate = require('mongoose-paginate')
+var Sequelize = require('sequelize')
+var sequelize = require('../utils/dbconnection')
+const Movie = sequelize.define('movies', {
+    title: {
+      type: Sequelize.STRING
+    },
+    overview: {
+      type: Sequelize.STRING
+    },
+    genre: {
+        type: Sequelize.STRING
+    },
+    director: {
+        type: Sequelize.STRING
+    },
+    imdb_rating: {
+        type: Sequelize.STRING
+    },
+    movie_id: {
+        type: Sequelize.INTEGER, primaryKey: true
+    }
+  });
+  
 
 
-var MovieSchema = new mongoose.Schema({
-    title: String,
-    overview: String,
-    status: String,
-    genre:String,
-    director:String,
-    year:String,
-    imdbRating:String,
-    rottenTomatoesRating:String,
-    image:String,
-    movieId:Number,
-    createDate: Date,
-})
-
-MovieSchema.plugin(mongoosePaginate)
-const Movie = mongoose.model('Movie', MovieSchema)
 
 module.exports = Movie;

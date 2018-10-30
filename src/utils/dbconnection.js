@@ -1,21 +1,9 @@
+const Sequelize = require('sequelize');
 
-var mysql = require('mysql');
-   var connection = mysql.createConnection({
-        host: "backlogbox.cupg23erkn75.us-east-2.rds.amazonaws.com",
-        user: "backlogbox",
-        password: "kabuto!_213",
-          database : 'backlogbox',
-          port: 3306,
-      });
+ const sequelize = new Sequelize('mysql://backlogbox:kabuto!_213@backlogbox.cupg23erkn75.us-east-2.rds.amazonaws.com:3306/backlogbox');
 
-      connection.connect(function(err) {
-        if (err){
-            throw err;
-        } 
-        else{
-            console.log("Mysql Connected")
-        }
-    });
 
-  module.exports=connection;
-  
+
+
+
+  module.exports = sequelize;

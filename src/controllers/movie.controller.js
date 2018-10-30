@@ -1,43 +1,43 @@
 var MovieService = require('../services/movie.service')
-
+var Movie = require('../models/movie.model')
 _this = this
 
 
 exports.getMovies = function(req, res){
 
-    try{
-        var movies = MovieService.getMovies()
-        return res.status(200).json({status: 200, data: movies, message: "Succesfully MovieService Recieved"});
-    }catch(e){
-        return res.status(400).json({status: 400, message: e.message});
-    }
+   
+       Movie.findAll().then(movies => {
+             return res.status(200).json({status: 200, data: movies, message: "Succesfully Movie Service Recieved"});
+       })
+       .catch(((err)=>{
+        res.status(400).json({status: 400, message: e.message});
+       }));
+  
 }
 
-exports.createMovie = async function(req, res, next){
+exports.createMovie = function(req, res){
+   
     var movie = {
         title: req.body.title,
         overview: req.body.overview,
-        status: req.body.status ,
         genre:req.body.genre ,
         director:req.body.director,
         year:req.body.year,
-        imdbRating:req.body.imdbRating,
-        rottenTomatoesRating:req.body.rottenTomatoesRating,
-        image:req.body.image
+        imdb_rating:req.body.imdb_rating,
+        image_url:req.body.image_url
     }
-
     try{
 
       
-        var createMovie = await MovieService.createMovie(movie)
-     
+        Movie.create(movie).then(createMovie => {
         return res.status(201).json({status: 201, data: createMovie, message: "Succesfully Created Movie"})
-    }catch(e){
+        })
+        }catch(e){
         return res.status(400).json({status: 400, message: e + "Movie Creation was Unsuccesfull"})
-    }
+        }
 }
 
-exports.updateMovie = async function(req, res, next){
+exports.updateMovie = function(req, res){
 
     if(!req.body._id){
         return res.status(400).json({status: 400., message: "Id must be present"})
@@ -45,38 +45,39 @@ exports.updateMovie = async function(req, res, next){
 
     var id = req.body._id;
 
-    console.log(req.body)
-
+ 
     var movie = {
-        id,
+       
         title: req.body.title ? req.body.title : null,
         overview: req.body.overview ? req.body.overview : null,
-        status: req.body.status ? req.body.status : null,
         genre: req.body.genre ? req.body.genre : null,
         director: req.body.director ? req.body.director : null,
         year: req.body.year ? req.body.year : null,
-        imdbRating: req.body.imdbRating ? req.body.imdbRating : null,
-        rottenTomatoesRating: req.body.rottenTomatoesRating ? req.body.rottenTomatoesRating : null,
-        image: req.body.image ? req.body.image : null
+        imdb_rating: req.body.imdb_rating ? req.body.imdb_rating : null,
+        image_url: req.body.image_url ? req.body.image_url : null
     }
 
-    try{
-        var updateMovie = await MovieService.updateMovie(movie)
-        return res.status(200).json({status: 200, data: updateMovie, message: "Succesfully Updated Tod"})
-    }catch(e){
+    
+        Movie.update(movie).then(updateMovie => {
+         res.status(200).json({status: 200, data: updateMovie, message: "Succesfully Updated Todo"})
+        })
+        .catch(((err)=>{
         return res.status(400).json({status: 400., message: e.message})
-    }
+        }))
+ 
 }
 
-exports.removeMovie = async function(req, res, next){
+exports.removeMovie =  function(req, res){
   
     var id = req.params.id;
-    console.log("id = " +  req.params.id)
-    try{
-        var deleted = await MovieService.deleteMovie(id)
-        return res.status(200).json({status:200, message: "Succesfully Movie Deleted"})
-    }catch(e){
+  
+    
+      Movie.deleted(id).then(deleted => {
+            res.status(200).json({status: 200,message: "Succesfully Updated Todo"})
+           })
+           .catch(((err)=>{
         return res.status(400).json({status: 400, message: e.message})
-    }
+           }));
+  
 
 }
