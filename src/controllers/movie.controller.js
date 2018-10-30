@@ -3,12 +3,10 @@ var MovieService = require('../services/movie.service')
 _this = this
 
 
-exports.getMovies = async function(req, res, next){
+exports.getMovies = function(req, res){
 
-    var page = req.query.page ? req.query.page : 1
-    var limit = req.query.limit ? req.query.limit : 10; 
     try{
-        var movies = await MovieService.getMovies({}, page, limit)
+        var movies = MovieService.getMovies()
         return res.status(200).json({status: 200, data: movies, message: "Succesfully MovieService Recieved"});
     }catch(e){
         return res.status(400).json({status: 400, message: e.message});
