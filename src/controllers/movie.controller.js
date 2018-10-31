@@ -39,11 +39,11 @@ exports.createMovie = function(req, res){
 
 exports.updateMovie = function(req, res){
 
-    if(!req.body._id){
+    if(!req.body.movie_id){
         return res.status(400).json({status: 400., message: "Id must be present"})
     }
 
-    var id = req.body._id;
+    var id = req.body.movie_id;
 
  
     var movie = {
