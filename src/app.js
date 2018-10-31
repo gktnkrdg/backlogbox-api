@@ -9,9 +9,6 @@ var users = require('./routes/users.route');
 var api = require('./routes/api.route')
 var compression = require('compression');
 var app = express();
-var mongoose = require('mongoose')
-
-
 var swaggerUi = require('swagger-ui-express')
 var  swaggerDocument = require('./../swagger.json')
 app.set('views', path.join(__dirname, 'views'));
