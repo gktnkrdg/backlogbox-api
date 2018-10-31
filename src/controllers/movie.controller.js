@@ -70,14 +70,19 @@ exports.updateMovie = function(req, res){
 exports.removeMovie =  function(req, res){
   
     var id = req.params.id;
-  
+    Movie.destroy({
+        where: {
+          id:id
+        },
+       
+      }).then(deleted => {
+        res.status(200).json({status: 200,message: "Succesfully Deleted Movie"})
+       })
+       .catch(((err)=>{
+    return res.status(400).json({status: 400, message: e.message})
+       }));
     
-      Movie.deleted(id).then(deleted => {
-            res.status(200).json({status: 200,message: "Succesfully Updated Todo"})
-           })
-           .catch(((err)=>{
-        return res.status(400).json({status: 400, message: e.message})
-           }));
+   
   
 
 }
