@@ -72,7 +72,7 @@ exports.removeMovie =  function(req, res){
     var id = req.params.id;
     Movie.destroy({
         where: {
-          id:req.params.id
+          movie_id:req.params.id
         },
        
       }).then(function (deletedRecord) {
