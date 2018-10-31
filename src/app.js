@@ -11,6 +11,7 @@ var compression = require('compression');
 var app = express();
 var swaggerUi = require('swagger-ui-express')
 var  swaggerDocument = require('./../swagger.json')
+var cors = require('cors')
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -22,12 +23,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", '*');
   res.header("Access-Control-Allow-Headers", "Origin,Accept,Content-Type, Access-Control-Request-Method,Access-Control-Request-Headers,Authorization");
   res.header('Access-Control-Allow-Methods', '*');
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
+app.use(cors())
 app.use(compression());
 
 app.use('/', index);
