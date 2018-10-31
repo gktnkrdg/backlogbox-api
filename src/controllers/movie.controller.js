@@ -72,15 +72,21 @@ exports.removeMovie =  function(req, res){
     var id = req.params.id;
     Movie.destroy({
         where: {
-          id:id
+          id:req.params.id
         },
        
-      }).then(deleted => {
-        res.status(200).json({status: 200,message: "Succesfully Deleted Movie"})
-       })
-       .catch(((err)=>{
-    return res.status(400).json({status: 400, message: e.message})
-       }));
+      }).then(function (deletedRecord) {
+        if(deletedRecord === 1){
+            res.status(200).json({message:"Deleted successfully"});          
+        }
+        else
+        {
+            res.status(404).json({message:"record not found"})
+        }
+    })
+    .catch(function (error){
+        res.status(500).json(error);
+    });
     
    
   
