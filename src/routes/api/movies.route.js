@@ -5,6 +5,7 @@ var router = express.Router()
 var MovieController = require('../../controllers/movie.controller');
 
 router.get('/', MovieController.getMovies)
+router.get('/:id', MovieController.getMoviesById)
 router.post('/', MovieController.createMovie)
 router.put('/', MovieController.updateMovie)
 router.delete('/:id',MovieController.removeMovie)

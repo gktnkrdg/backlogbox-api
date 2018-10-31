@@ -66,7 +66,17 @@ exports.updateMovie = function(req, res){
         }))
  
 }
+exports.getMoviesById = function(req, res){
+    var id = req.params.id;
+   
+    Movie.findById(id).then(movies => {
+        return res.status(200).json({status: 200, data: movies, message: "Succesfully Movie Service Recieved"});
+    })
+    .catch(((err)=>{
+        res.status(400).json({status: 400, message: e.message});
+    }));
 
+}
 exports.removeMovie =  function(req, res){
   
     var id = req.params.id;
