@@ -1,9 +1,6 @@
 var Sequelize = require('sequelize')
 var sequelize = require('../utils/dbconnection')
 const Movie = sequelize.define('movies', {
-    movie_id:{
-        type: Sequelize.INTEGER
-    },
     title: {
       type: Sequelize.STRING
     },
@@ -20,7 +17,7 @@ const Movie = sequelize.define('movies', {
         type: Sequelize.STRING
     },
     movie_id: {
-        type: Sequelize.INTEGER, primaryKey: true
+        type: Sequelize.INTEGER, primaryKey: true , autoIncrement:true
     }
   });
   
