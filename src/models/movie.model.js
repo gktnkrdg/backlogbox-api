@@ -2,7 +2,7 @@ var Sequelize = require('sequelize')
 var sequelize = require('../utils/dbconnection')
 const Movie = sequelize.define('movies', {
     movie_id:{
-        type: DataTypes.INTEGER
+        type: Sequelize.INTEGER
     },
     title: {
       type: Sequelize.STRING
