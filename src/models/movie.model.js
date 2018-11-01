@@ -2,7 +2,7 @@ var Sequelize = require('sequelize')
 var sequelize = require('../utils/dbconnection')
 const Movie = sequelize.define('movies', {
     movie_id:{
-        autoincrement: true,
+        autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
     },
