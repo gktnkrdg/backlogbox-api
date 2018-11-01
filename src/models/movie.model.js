@@ -7,7 +7,7 @@ const Movie = sequelize.define('movies', {
     overview: {
       type: Sequelize.STRING
     },
-    genre: {
+    genres: {
         type: Sequelize.STRING
     },
     director: {
@@ -18,6 +18,21 @@ const Movie = sequelize.define('movies', {
     },
     movie_id: {
         type: Sequelize.INTEGER, primaryKey: true , autoIncrement:true
+    },
+    image_url: {
+        type: Sequelize.STRING
+    },
+    release_date: {
+        type: Sequelize.DATE
+    },
+    title_en: {
+        type: Sequelize.STRING
+    },
+    themoviedb_rating: {
+        type: Sequelize.STRING
+    },
+    tagline: {
+        type: Sequelize.STRING
     }
   });
   

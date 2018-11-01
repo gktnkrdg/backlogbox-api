@@ -20,11 +20,14 @@ exports.createMovie = function(req, res){
     var movie = {
         title: req.body.title,
         overview: req.body.overview,
-        genre:req.body.genre ,
-        director:req.body.director,
-        year:req.body.year,
-        imdb_rating:req.body.imdb_rating,
-        image_url:req.body.image_url
+        genres: req.body.genres,
+        director: req.body.director ,
+        imdb_rating: req.body.imdb_rating ,
+        image_url: req.body.image_url,
+        release_date: req.body.release_date ,
+        title_en: req.body.title_en,
+        themoviedb_rating: req.body.themoviedb_rating,
+        tagline: req.body.tagline
     }
     try{
 
@@ -50,11 +53,14 @@ exports.updateMovie = function(req, res){
        
         title: req.body.title ? req.body.title : null,
         overview: req.body.overview ? req.body.overview : null,
-        genre: req.body.genre ? req.body.genre : null,
+        genres: req.body.genres ? req.body.genres : null,
         director: req.body.director ? req.body.director : null,
-        year: req.body.year ? req.body.year : null,
         imdb_rating: req.body.imdb_rating ? req.body.imdb_rating : null,
-        image_url: req.body.image_url ? req.body.image_url : null
+        image_url: req.body.image_url ? req.body.image_url : null,
+        release_date: req.body.release_date ? req.body.release_date : null,
+        title_en: req.body.title_en ? req.body.title_en : null,
+        themoviedb_rating: req.body.themoviedb_rating ? req.body.themoviedb_rating : null,
+        tagline: req.body.tagline ? req.body.tagline : null
     }
 
     
