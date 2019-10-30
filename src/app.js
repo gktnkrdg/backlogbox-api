@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 });
 app.use(cors())
 app.use(compression());
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);

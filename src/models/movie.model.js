@@ -34,7 +34,9 @@ const Movie = sequelize.define('movies', {
     tagline: {
         type: Sequelize.STRING
     }
-  });
+  },{
+    timestamps: false
+});
   
 
 

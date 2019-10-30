@@ -10,7 +10,7 @@ exports.getMovies = function(req, res){
              return res.status(200).json({status: 200, data: movies, message: "Succesfully Movie Service Recieved"});
        })
        .catch(((err)=>{
-        res.status(400).json({status: 400, message: e.message});
+        res.status(400).json({status: 400, message: err.message});
        }));
   
 }
@@ -47,10 +47,7 @@ exports.updateMovie = function(req, res){
     }
 
     var id = req.body.movie_id;
-
- 
     var movie = {
-       
         title: req.body.title ? req.body.title : null,
         overview: req.body.overview ? req.body.overview : null,
         genres: req.body.genres ? req.body.genres : null,
@@ -62,8 +59,6 @@ exports.updateMovie = function(req, res){
         themoviedb_rating: req.body.themoviedb_rating ? req.body.themoviedb_rating : null,
         tagline: req.body.tagline ? req.body.tagline : null
     }
-
-    
         Movie.update(movie).then(updateMovie => {
          res.status(200).json({status: 200, data: updateMovie, message: "Succesfully Updated Todo"})
         })
